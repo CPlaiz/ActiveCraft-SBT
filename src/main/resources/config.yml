@@ -1,0 +1,59 @@
+#  Configuration file for ActiveCraft-Tab
+#  Made by CPlaiz and Silencio
+
+# List of usable Placeholders
+# %online%       -> Returns the total amount of online players.
+# %ping%         -> Returns the player's ping.
+# %playername%   -> Returns the player's name.
+# %displayname%  -> Returns the player's displayname.
+# %world%        -> Returns the name of the player's current world.
+# %worldonline%  -> Returns the amount of players in the same world.
+# %canseeonline% -> Returns all non-vanished players.
+# PlaceHolderAPI integrated.
+
+# Settings
+# 20 Ticks = 1 Second
+refresh-interval-ticks: 200
+show-ping: true
+
+# Tab Format
+tab-header:
+  - 'Tab Header Line 1'
+  - 'Tab Header Line 2'
+  - 'Tab Header Line 3'
+  - 'Tab Header Line 4'
+
+tab-footer:
+  - 'Tab Footer Line 1'
+  - 'Tab Footer Line 2'
+  - 'Tab Footer Line 3'
+  - 'Tab Footer Line 4'
+
+# Player list
+# If only players in the same or grouped world should be shown in the playerlist.
+per-world-playerlist: false
+# Group multiple worlds together.
+group-worlds:
+  default:
+    - world
+    - world_nether
+    - world_the_end
+  hub:
+    - lobby
+    - lobby2
+
+# Define a group's Tab prefix and suffix.
+permission-groups:
+  Owner:
+    prefix: "[Owner] "
+    suffix: ""
+  Admin:
+    prefix: "[Admin] "
+    suffix: ""
+
+# Sort groups in the tab list, descending.
+group-list-sort:
+  - "Owner"
+  - "Admin"
+  - "Mod"
+  - "Player"

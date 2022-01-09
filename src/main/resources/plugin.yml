@@ -1,0 +1,25 @@
+name: ActiveCraft-Tab
+version: '${project.version}'
+main: de.cplaiz.activecrafttab.ActiveCraftTab
+api-version: 1.17
+authors: [ CPlaiz, Silencio ]
+description: fwadwfa
+depend: [ActiveCraft-Core]
+
+commands:
+  testcommand:
+    description: Test
+    permission: activecraft.test
+    permission-message: "§cWarning! §7You don't have the permission to do that!"
+  reloadtab:
+    description: Reloads the plugin configuration.
+    permission: activecrafttab.reload
+
+
+permissions:
+  activecraft.test:
+    description: Test
+    default: op
+  activecrafttab.reload:
+    description: Reloads the plugin configuration
+    default: op
