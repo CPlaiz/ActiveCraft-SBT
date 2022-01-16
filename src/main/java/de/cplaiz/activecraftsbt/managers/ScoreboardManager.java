@@ -14,15 +14,14 @@ import java.util.List;
 public class ScoreboardManager {
 
     public static void updateScoreboard(Player player) {
-        FileConfig mainConfig = new FileConfig("ActiveCraft-SBT", "config.yml");
-        List<String> scoreBoardList = mainConfig.getStringList("board");
-        Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
-        Objective objective = board.registerNewObjective("test", "dummy");
+        List<String> scoreBoardList = ActiveCraftSBT.getMainConfig().getStringList("board");
+        Scoreboard board = ActiveCraftSBT.getScoreboard();
+        Objective objective = board.getObjective("motherboard") == null ? board.registerNewObjective("motherboard", "dummy") : board.getObjective("motherboard");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        if (mainConfig.getString("title") == null) {
+        if (ActiveCraftSBT.getMainConfig().getString("title") == null) {
             objective.setDisplayName(" ");
         } else {
-            objective.setDisplayName(mainConfig.getString("title"));
+            objective.setDisplayName(ActiveCraftSBT.getMainConfig().getString("title"));
         }
 
         for (int i = 0; i < scoreBoardList.size(); i++) {

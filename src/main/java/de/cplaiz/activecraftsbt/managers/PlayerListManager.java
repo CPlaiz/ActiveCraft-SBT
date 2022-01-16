@@ -18,8 +18,8 @@ public class PlayerListManager {
         StringBuilder headerBuilder = new StringBuilder();
         StringBuilder footerBuilder = new StringBuilder();
 
-        List<String> headerList = mainConfig.getStringList("tab-header");
-        List<String> footerList = mainConfig.getStringList("tab-footer");
+        List<String> headerList = ActiveCraftSBT.getMainConfig().getStringList("tab-header");
+        List<String> footerList = ActiveCraftSBT.getMainConfig().getStringList("tab-footer");
 
         for (int i = 0; i < headerList.size(); i++) {
             if (i != 0) headerBuilder.append("§r\n");

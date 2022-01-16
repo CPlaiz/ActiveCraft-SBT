@@ -1,6 +1,7 @@
 package de.cplaiz.activecraftsbt.managers;
 
 import de.cplaiz.activecraftsbt.ActiveCraftSBT;
+import de.silencio.activecraftcore.utils.FileConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.*;
@@ -11,8 +12,8 @@ import java.util.List;
 public class PlayerSortManager {
 
     public static void updatePlayerSort() {
-        Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
         List<String> list = new ArrayList<>(ActiveCraftSBT.getMainConfig().getStringList("group-list-sort"));
+        Scoreboard board = ActiveCraftSBT.getScoreboard();
 
         for (int i = 0; i < list.size(); i++) {
             Team team = board.registerNewTeam(String.valueOf(i + 1));
@@ -22,19 +23,22 @@ public class PlayerSortManager {
                     Objective ping = board.registerNewObjective("ping", "dummy");
                     ping.setDisplaySlot(DisplaySlot.PLAYER_LIST);
                     for (Player player : Bukkit.getOnlinePlayers()) {
-                        Score score = ping.getScore(player);
+                        Score score = ping.getScore(player.getName());
                         score.setScore(player.getPing());
+                        player.setScoreboard(board);
                     }
                 } else {
                     Objective ping = board.getObjective("ping");
                     ping.setDisplaySlot(DisplaySlot.PLAYER_LIST);
                     for (Player player : Bukkit.getOnlinePlayers()) {
-                        Score score = ping.getScore(player);
+                        Score score = ping.getScore(player.getName());
                         score.setScore(player.getPing());
+                        player.setScoreboard(board);
                     }
                 }
             }
         }
+
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             for (int i = 0; i < list.size(); i++) {
@@ -42,9 +46,11 @@ public class PlayerSortManager {
                     Team team = board.getTeam(String.valueOf(i + 1));
                     team.addEntry(player.getName());
                     player.setScoreboard(board);
+                    break;
                 }
             }
         }
+
     }
 
     private static String getHighestGroup(Player player) {

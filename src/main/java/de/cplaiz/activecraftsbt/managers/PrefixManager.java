@@ -5,6 +5,7 @@ import de.silencio.activecraftcore.ActiveCraftCore;
 import de.silencio.activecraftcore.commands.ColorNickCommand;
 import de.silencio.activecraftcore.events.*;
 import de.silencio.activecraftcore.playermanagement.Profile;
+import de.silencio.activecraftcore.utils.FileConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -17,12 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrefixManager implements Listener {
-
-    public static void addPrefix(Player player, String prefix) {
-        String displayName = prefix + " " + player.getDisplayName();
-        player.setDisplayName(displayName);
-        player.setPlayerListName(displayName);
-    }
 
     public static void updatePrefix(Player player) {
         if (player == null) return;

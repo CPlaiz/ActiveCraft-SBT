@@ -33,13 +33,13 @@ tab-footer:
 # If a player has OP, the highest group's prefix in this list will be applied.
 permission-groups:
   Owner:
-    prefix: "§4[Owner]§f"
+    prefix: "§4[Owner]"
   Admin:
-    prefix: "§c[Admin]§f"
+    prefix: "§c[Admin]"
   Mod:
-    prefix: "§3[Mod]§f"
-  Player:
-    prefix: "§7"
+    prefix: "§3[Mod]"
+  Default:
+    prefix: ""
 
 # Sort groups in the tab list, descending.
 # If a player has OP, the highest group in this list will be used for sorting.
@@ -47,7 +47,7 @@ group-list-sort:
   - Owner
   - Admin
   - Mod
-  - Player
+  - Default
 
 
 #                 ---> Settings for Scoreboard <---
