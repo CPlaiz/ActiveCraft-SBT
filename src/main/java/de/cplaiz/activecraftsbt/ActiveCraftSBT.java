@@ -2,7 +2,6 @@ package de.cplaiz.activecraftsbt;
 
 import de.cplaiz.activecraftsbt.managers.PlayerListManager;
 import de.cplaiz.activecraftsbt.managers.PlayerSortManager;
-import de.cplaiz.activecraftsbt.managers.PrefixManager;
 import de.cplaiz.activecraftsbt.managers.ScoreboardManager;
 import de.silencio.activecraftcore.Metrics;
 import de.silencio.activecraftcore.utils.FileConfig;

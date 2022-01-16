@@ -42,6 +42,4 @@ public class PrefixManager implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         PrefixManager.updatePrefix(event.getPlayer());
     }
-
-
 }
