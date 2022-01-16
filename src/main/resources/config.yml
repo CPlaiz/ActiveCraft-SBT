@@ -1,59 +1,62 @@
-#  Configuration file for ActiveCraft-Tab
+#  Configuration file for ActiveCraft-SBT
 #  Made by CPlaiz and Silencio
-
-# List of usable Placeholders
-# %online%       -> Returns the total amount of online players.
-# %ping%         -> Returns the player's ping.
-# %playername%   -> Returns the player's name.
-# %displayname%  -> Returns the player's displayname.
-# %world%        -> Returns the name of the player's current world.
-# %worldonline%  -> Returns the amount of players in the same world.
-# %canseeonline% -> Returns all non-vanished players.
 # PlaceHolderAPI integrated.
 
+
+
+#                 ---> General Settings <---
+refresh-interval-ticks: 20
+
+
+#                 ---> Settings for Tab <---
 # Settings
 # 20 Ticks = 1 Second
-refresh-interval-ticks: 200
+tab-module-enabled: true
 show-ping: true
 
 # Tab Format
 tab-header:
-  - 'Tab Header Line 1'
-  - 'Tab Header Line 2'
-  - 'Tab Header Line 3'
-  - 'Tab Header Line 4'
+  - '§1Tab Header Line 1'
+  - '§9Tab Header Line 2'
+  - '§3Tab Header Line 3'
+  - '§bTab Header Line 4'
 
 tab-footer:
-  - 'Tab Footer Line 1'
-  - 'Tab Footer Line 2'
-  - 'Tab Footer Line 3'
-  - 'Tab Footer Line 4'
-
-# Player list
-# If only players in the same or grouped world should be shown in the playerlist.
-per-world-playerlist: false
-# Group multiple worlds together.
-group-worlds:
-  default:
-    - world
-    - world_nether
-    - world_the_end
-  hub:
-    - lobby
-    - lobby2
+  - '§bTab Footer Line 1'
+  - '§3Tab Footer Line 2'
+  - '§9Tab Footer Line 3'
+  - '§1Tab Footer Line 4'
 
 # Define a group's Tab prefix and suffix.
+# This only works if Luckperms is installed.
+# Prefixes are assigned as sorted in this list, only the highest group's prefix is applied.
+# If a player has OP, the highest group's prefix in this list will be applied.
 permission-groups:
   Owner:
-    prefix: "[Owner] "
-    suffix: ""
+    prefix: "§4[Owner]§f"
   Admin:
-    prefix: "[Admin] "
-    suffix: ""
+    prefix: "§c[Admin]§f"
+  Mod:
+    prefix: "§3[Mod]§f"
+  Player:
+    prefix: "§7"
 
 # Sort groups in the tab list, descending.
+# If a player has OP, the highest group in this list will be used for sorting.
 group-list-sort:
-  - "Owner"
-  - "Admin"
-  - "Mod"
-  - "Player"
+  - Owner
+  - Admin
+  - Mod
+  - Player
+
+
+#                 ---> Settings for Scoreboard <---
+# Settings
+scoreboard-module-enabled: true
+
+# Scoreboard Settings
+title: "§bScoreboard Title"
+board:
+  - "Scoreboard Line 1"
+  - "Scoreboard Line 2"
+  - "Scoreboard Line 3"
