@@ -13,7 +13,6 @@ public class PlayerListManager {
     }
 
     public static void updatePlayerlist(Player player) {
-        FileConfig mainConfig = new FileConfig("ActiveCraft-SBT", "config.yml");
 
         StringBuilder headerBuilder = new StringBuilder();
         StringBuilder footerBuilder = new StringBuilder();

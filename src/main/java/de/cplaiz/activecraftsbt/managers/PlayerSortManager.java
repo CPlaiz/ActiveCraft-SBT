@@ -16,7 +16,9 @@ public class PlayerSortManager {
         Scoreboard board = ActiveCraftSBT.getScoreboard();
 
         for (int i = 0; i < list.size(); i++) {
-            Team team = board.registerNewTeam(String.valueOf(i + 1));
+
+            if (board.getTeam(String.valueOf(i + 1)) == null)
+                board.registerNewTeam(String.valueOf(i + 1));
 
             if (ActiveCraftSBT.getMainConfig().getBoolean("show-ping")) {
                 if (board.getObjective("ping") == null) {
@@ -42,7 +44,7 @@ public class PlayerSortManager {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             for (int i = 0; i < list.size(); i++) {
-                if (player.hasPermission("group." + list.get(i).toLowerCase()) && list.get(i).toLowerCase().equals(getHighestGroup(player).toLowerCase())) {
+                if (player.hasPermission("group." + list.get(i).toLowerCase()) && list.get(i).equalsIgnoreCase(getHighestGroup(player))) {
                     Team team = board.getTeam(String.valueOf(i + 1));
                     team.addEntry(player.getName());
                     player.setScoreboard(board);
@@ -54,15 +56,9 @@ public class PlayerSortManager {
     }
 
     private static String getHighestGroup(Player player) {
-        List<String> list = new ArrayList<>(ActiveCraftSBT.getMainConfig().getStringList("group-list-sort"));
-
-        for (int i = 0; i < list.size(); i++) {
-            String highestGroup = "default";
-            if (player.hasPermission("group." + list.get(i).toLowerCase())) {
-                highestGroup = list.get(i);
-                return highestGroup;
-            }
-        }
+        for (String s : ActiveCraftSBT.getMainConfig().getStringList("group-list-sort"))
+            if (player.hasPermission("group." + s.toLowerCase()))
+                return s;
         return "default";
     }
 }

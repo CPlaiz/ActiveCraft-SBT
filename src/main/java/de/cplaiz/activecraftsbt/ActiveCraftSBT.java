@@ -22,6 +22,8 @@ public final class ActiveCraftSBT extends JavaPlugin {
     public static boolean usePlaceholderAPI;
     public static String PREFIX = ChatColor.GOLD + "[ActiveCraft-SBT] ";
 
+    private static Scoreboard scoreboard;
+
     public ActiveCraftSBT() {
         plugin = this;
     }
@@ -29,6 +31,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
     @Override
     public void onEnable() {
         usePlaceholderAPI = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
+        scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         TabPluginManager.init();
         saveDefaultConfig();
         log("Plugin loaded.");
@@ -47,6 +50,9 @@ public final class ActiveCraftSBT extends JavaPlugin {
         BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
+
+                mainConfig = new FileConfig("config.yml", ActiveCraftSBT.getPlugin());
+
                 if (refreshInterval != getMainConfig().getInt("refresh-interval-ticks")) {
                     cancel();
                     startUpdateTimer();
@@ -56,6 +62,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
                     PlayerListManager.updatePlayerlist(new ArrayList<>(Bukkit.getOnlinePlayers()));
                     PlayerSortManager.updatePlayerSort();
                 }
+
 
                 if (getMainConfig().getBoolean("scoreboard-module-enabled")) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
@@ -82,5 +89,9 @@ public final class ActiveCraftSBT extends JavaPlugin {
 
     public static void setMainConfig(FileConfig mainConfig) {
         ActiveCraftSBT.mainConfig = mainConfig;
+    }
+
+    public static Scoreboard getScoreboard() {
+        return scoreboard;
     }
 }
