@@ -1,6 +1,6 @@
-package de.cplaiz.activecrafttab;
+package de.cplaiz.activecraftsbt;
 
-import de.cplaiz.activecrafttab.commands.TestCommand;
+import de.cplaiz.activecraftsbt.managers.PrefixManager;
 import de.silencio.activecraftcore.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +19,7 @@ public class TabPluginManager {
     public static void init() {
         // general listeners
         addListeners(
-
+            new PrefixManager()
         );
 
         //register ac commands
@@ -42,7 +42,7 @@ public class TabPluginManager {
 
     private static void register() {
         for (Listener listener : listeners)
-            Bukkit.getPluginManager().registerEvents(listener, ActiveCraftTab.getPlugin());
+            Bukkit.getPluginManager().registerEvents(listener, ActiveCraftSBT.getPlugin());
         for (String cmd : commands.keySet()) {
             try {
                 Bukkit.getPluginCommand(cmd).setExecutor(commands.get(cmd));
