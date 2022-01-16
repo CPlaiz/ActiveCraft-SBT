@@ -6,6 +6,7 @@ import de.cplaiz.activecraftsbt.managers.ScoreboardManager;
 import de.silencio.activecraftcore.Metrics;
 import de.silencio.activecraftcore.utils.FileConfig;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -13,14 +14,13 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.ArrayList;
 
-import static java.rmi.server.LogStream.log;
-
 public final class ActiveCraftSBT extends JavaPlugin {
 
     private static ActiveCraftSBT plugin;
     private static FileConfig mainConfig;
     private static Scoreboard teamScoreboard;
     public static boolean usePlaceholderAPI;
+    public static String PREFIX = ChatColor.GOLD + "[ActiveCraft-SBT] ";
 
     public ActiveCraftSBT() {
         plugin = this;
@@ -34,7 +34,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
         log("Plugin loaded.");
         mainConfig = new FileConfig("config.yml", this);
         startUpdateTimer();
-        Metrics metrics = new Metrics(this, 13895);
+        Metrics metrics = new Metrics(this, 13973);
     }
 
     @Override
@@ -70,6 +70,10 @@ public final class ActiveCraftSBT extends JavaPlugin {
 
     public static ActiveCraftSBT getPlugin() {
         return plugin;
+    }
+
+    public void log(String text) {
+        Bukkit.getConsoleSender().sendMessage(PREFIX + text);
     }
 
     public static FileConfig getMainConfig() {
