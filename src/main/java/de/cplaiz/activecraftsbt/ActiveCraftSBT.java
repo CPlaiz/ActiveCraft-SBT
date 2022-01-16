@@ -20,6 +20,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
     private static ActiveCraftSBT plugin;
     private static FileConfig mainConfig;
     private static Scoreboard teamScoreboard;
+    public static boolean usePlaceholderAPI;
 
     public ActiveCraftSBT() {
         plugin = this;
@@ -27,6 +28,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        usePlaceholderAPI = Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI");
         TabPluginManager.init();
         saveDefaultConfig();
         log("Plugin loaded.");

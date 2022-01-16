@@ -1,7 +1,7 @@
 package de.cplaiz.activecraftsbt.managers;
 
+import de.cplaiz.activecraftsbt.ActiveCraftSBT;
 import de.silencio.activecraftcore.utils.FileConfig;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -31,7 +31,9 @@ public class PlayerListManager {
             footerBuilder.append(footerList.get(i));
         }
 
-        player.setPlayerListHeader(PlaceholderAPI.setPlaceholders(player, headerBuilder.toString()));
-        player.setPlayerListFooter(PlaceholderAPI.setPlaceholders(player, footerBuilder.toString()));
+        player.setPlayerListHeader(ActiveCraftSBT.usePlaceholderAPI ?
+                me.clip.placeholderapi.PlaceholderAPI.setPlaceholders(player, headerBuilder.toString()) : headerBuilder.toString());
+        player.setPlayerListFooter(ActiveCraftSBT.usePlaceholderAPI ?
+                me.clip.placeholderapi.PlaceholderAPI.setPlaceholders(player, footerBuilder.toString()) : footerBuilder.toString());
     }
 }

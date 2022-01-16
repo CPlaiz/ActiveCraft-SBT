@@ -1,7 +1,7 @@
 package de.cplaiz.activecraftsbt.managers;
 
+import de.cplaiz.activecraftsbt.ActiveCraftSBT;
 import de.silencio.activecraftcore.utils.FileConfig;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -27,7 +27,10 @@ public class ScoreboardManager {
 
         for (int i = 0; i < scoreBoardList.size(); i++) {
             int scoreSize = scoreBoardList.size() - i;
-            Score score = objective.getScore(PlaceholderAPI.setPlaceholders(player, scoreBoardList.get(i)));
+
+            String rawScore = ActiveCraftSBT.usePlaceholderAPI ? me.clip.placeholderapi.PlaceholderAPI.setPlaceholders(player, scoreBoardList.get(i)) : scoreBoardList.get(i);
+
+            Score score = objective.getScore(rawScore.length() > 40 ? rawScore.substring(0, 39) : rawScore);
             score.setScore(scoreSize);
         }
         player.setScoreboard(board);
