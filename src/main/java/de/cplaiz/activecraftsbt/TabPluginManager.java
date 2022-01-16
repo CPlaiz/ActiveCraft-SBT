@@ -24,7 +24,6 @@ public class TabPluginManager {
 
         //register ac commands
         registerCommands(
-            new TestCommand()
         );
 
         register();

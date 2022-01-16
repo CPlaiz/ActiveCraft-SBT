@@ -1,5 +1,7 @@
 # User-specific stuff
 .idea/
+server
+target
 
 *.iml
 *.ipr

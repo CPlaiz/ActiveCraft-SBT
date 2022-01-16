@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>ActiveCraft-Tab</name>
+    <name>ActiveCraft-SBT</name>
 
     <description>fwadwfa</description>
     <properties>
@@ -78,7 +78,7 @@
         <dependency>
             <groupId>de.silencio</groupId>
             <artifactId>activecraftcore</artifactId>
-            <version>1.2.3</version>
+            <version>1.2.5</version>
             <scope>system</scope>
             <systemPath>C:/Users/bjun3/IdeaProjects/ActiveCraft-SBT/Server/plugins/ActiveCraft-Core.jar</systemPath>
         </dependency>
