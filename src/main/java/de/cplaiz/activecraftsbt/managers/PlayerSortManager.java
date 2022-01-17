@@ -4,10 +4,10 @@ import de.cplaiz.activecraftsbt.ActiveCraftSBT;
 import de.silencio.activecraftcore.utils.FileConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.scoreboard.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PlayerSortManager {
 
@@ -43,8 +43,9 @@ public class PlayerSortManager {
 
 
         for (Player player : Bukkit.getOnlinePlayers()) {
+            Set<String> effectivePermissions = ActiveCraftSBT.getEffectivePerms(player);
             for (int i = 0; i < list.size(); i++) {
-                if (player.hasPermission("group." + list.get(i).toLowerCase()) && list.get(i).equalsIgnoreCase(getHighestGroup(player))) {
+                if (effectivePermissions.contains("group." + list.get(i).toLowerCase()) && list.get(i).equalsIgnoreCase(getHighestGroup(player))) {
                     Team team = board.getTeam(String.valueOf(i + 1));
                     team.addEntry(player.getName());
                     player.setScoreboard(board);
@@ -57,7 +58,7 @@ public class PlayerSortManager {
 
     private static String getHighestGroup(Player player) {
         for (String s : ActiveCraftSBT.getMainConfig().getStringList("group-list-sort"))
-            if (player.hasPermission("group." + s.toLowerCase()))
+            if (ActiveCraftSBT.getEffectivePerms(player).contains("group." + s.toLowerCase()))
                 return s;
         return "default";
     }

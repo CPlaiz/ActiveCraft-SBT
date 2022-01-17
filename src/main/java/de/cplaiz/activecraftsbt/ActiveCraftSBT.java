@@ -10,12 +10,15 @@ import de.silencio.activecraftcore.utils.FileConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 public final class ActiveCraftSBT extends JavaPlugin {
 
@@ -98,5 +101,12 @@ public final class ActiveCraftSBT extends JavaPlugin {
 
     public static Scoreboard getScoreboard() {
         return scoreboard;
+    }
+
+    public static Set<String> getEffectivePerms(Player player) {
+        Set<String> effectivePerms = new TreeSet<>();
+        for (PermissionAttachmentInfo perm : player.getEffectivePermissions())
+            effectivePerms.add(perm.getPermission());
+        return effectivePerms;
     }
 }

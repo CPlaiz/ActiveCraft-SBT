@@ -13,9 +13,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class PrefixManager implements Listener {
 
@@ -24,9 +27,10 @@ public class PrefixManager implements Listener {
         ConfigurationSection configSection = ActiveCraftSBT.getMainConfig().getConfigurationSection("permission-groups");
         List<String> list = new ArrayList<>(configSection.getKeys(false));
         Profile profile = ActiveCraftCore.getProfile(player);
+        Set<String> effectivePermissions = ActiveCraftSBT.getEffectivePerms(player);
         for (String s : list) {
             String prefix = configSection.getString(s + ".prefix");
-            if (player.hasPermission("group." + s.toLowerCase())) {
+            if (effectivePermissions.contains("group." + s.toLowerCase())) {
                 profile.setPrefix(prefix);
                 break;
             }
