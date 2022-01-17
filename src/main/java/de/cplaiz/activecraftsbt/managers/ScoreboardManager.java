@@ -18,11 +18,7 @@ public class ScoreboardManager {
         Scoreboard board = ActiveCraftSBT.getScoreboard();
         Objective objective = board.getObjective("motherboard") == null ? board.registerNewObjective("motherboard", "dummy") : board.getObjective("motherboard");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        if (ActiveCraftSBT.getMainConfig().getString("title") == null) {
-            objective.setDisplayName(" ");
-        } else {
-            objective.setDisplayName(ActiveCraftSBT.getMainConfig().getString("title"));
-        }
+        objective.setDisplayName(ActiveCraftSBT.getMainConfig().getString("title") == null ? " " : ActiveCraftSBT.getMainConfig().getString("title"));
 
         for (int i = 0; i < scoreBoardList.size(); i++) {
             int scoreSize = scoreBoardList.size() - i;

@@ -3,6 +3,6 @@ version: '${project.version}'
 main: de.cplaiz.activecraftsbt.ActiveCraftSBT
 api-version: 1.17
 authors: [ CPlaiz, Silencio ]
-description: ActiveCraft-SBT
+description: A dynamically updated Tab and Scoreboard manager.
 softdepend: [PlaceholderAPI]
 depend: [ActiveCraft-Core]

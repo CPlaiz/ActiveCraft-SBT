@@ -6,12 +6,12 @@
 
     <groupId>de.cplaiz</groupId>
     <artifactId>activecrafttab</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>ActiveCraft-SBT</name>
 
-    <description>fwadwfa</description>
+    <description>Make your Server stand out.</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -80,7 +80,7 @@
             <artifactId>activecraftcore</artifactId>
             <version>1.2.5</version>
             <scope>system</scope>
-            <systemPath>C:/Users/bjun3/IdeaProjects/ActiveCraft-SBT/Server/plugins/ActiveCraft-Core.jar</systemPath>
+            <systemPath>C:/Users/trees/IdeaProjects/ActiveCraft-SBT/Server/plugins/ActiveCraft-Core.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>

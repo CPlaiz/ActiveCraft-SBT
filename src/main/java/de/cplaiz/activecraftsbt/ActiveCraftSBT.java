@@ -3,13 +3,16 @@ package de.cplaiz.activecraftsbt;
 import de.cplaiz.activecraftsbt.managers.PlayerListManager;
 import de.cplaiz.activecraftsbt.managers.PlayerSortManager;
 import de.cplaiz.activecraftsbt.managers.ScoreboardManager;
+import de.silencio.activecraftcore.ActiveCraftCore;
 import de.silencio.activecraftcore.Metrics;
+import de.silencio.activecraftcore.playermanagement.Profile;
 import de.silencio.activecraftcore.utils.FileConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.ArrayList;
@@ -43,6 +46,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
     @Override
     public void onDisable() {
         log("Plugin Unloaded.");
+        for (Profile profile : ActiveCraftCore.getProfiles().values()) profile.setPrefix("");
     }
 
     private void startUpdateTimer() {
@@ -65,6 +69,7 @@ public final class ActiveCraftSBT extends JavaPlugin {
 
 
                 if (getMainConfig().getBoolean("scoreboard-module-enabled")) {
+                    for (Objective objective : scoreboard.getObjectives()) objective.unregister();
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         ScoreboardManager.updateScoreboard(player);
                     }
